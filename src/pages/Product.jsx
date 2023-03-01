@@ -15,6 +15,7 @@ export default function Product() {
     return (
 
         <div className="menu-item">
+            <h1>Product Details</h1>
             <h2> {name}</h2>
             <img src={imageURL} alt={"BBQ - " + name} />
             <p>{description}</p>
