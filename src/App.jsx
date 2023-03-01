@@ -19,7 +19,7 @@ export default function App() {
             <Route path="/contact" element={<Contact/>}/>
             <Route path="/menu" element={<Menu/>}/>
             <Route path="/menu/:categoryID" element={<Category/>}/>
-            <Route path="/menu/:categoryID/Item/:productID" element={<Product/>}/>
+            <Route path="/menu/:categoryID/Products/:productID" element={<Product/>}/>
         </Routes>
     </BrowserRouter>
   );

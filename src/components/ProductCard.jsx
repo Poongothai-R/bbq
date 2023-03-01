@@ -1,7 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 
 
-export default function ProductCard({ data }) {
+export default function ProductCard( {data}) {
 
     const { categoryID } = useParams();
     const { id,name, description, imageURL,  } = data;
@@ -13,7 +13,7 @@ export default function ProductCard({ data }) {
             <h2> {name}</h2>
             <img src={imageURL} alt={"BBQ - " + name} />
             <p>{description}</p>
-            <Link to={`/menu/${categoryID}/Item/${id}`}>View More</Link>
+            <Link to={`/menu/${categoryID}/Products/${id}`} state={{data}}>View More</Link>
         </div>
     )
 }

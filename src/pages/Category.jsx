@@ -9,8 +9,6 @@ import ProductCard from "../components/ProductCard";
 
 export default function Menu() {
     const { categoryID } = useParams();
-    console.log(categoryID)
-
 
     // Local state
 
@@ -24,7 +22,7 @@ export default function Menu() {
             const data = await readDocuments(collectionName).catch(onFail);
             onSuccess(data);
         }
-        loadData("/menu/"+categoryID+"/Item");
+        loadData("/menu/"+categoryID+"/Products");
     }, []);
 
     function onSuccess(data) {
