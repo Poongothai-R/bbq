@@ -1,26 +1,31 @@
-import {Link, useParams,useLocation} from "react-router-dom";
+// Node modules
+import { Link, useParams, useLocation } from 'react-router-dom';
+
 
 
 export default function Product() {
-    const {categoryID}=useParams();
-    const location=useLocation();
-    const {data} = location.state;
-    const { name, description, imageURL,ingredients} = data;
+    const { categoryID } = useParams();
+    const location = useLocation();
+    const { data, adminStatus } = location.state;
+
+
+    const { name, description, imageURL, price, ingredients } = data;
     const IngredientsList = ingredients.map((recs, index) => (
         <li key={index}>{recs}</li>
     ));
-
-
-
     return (
+        <div className="menu" id="menu">
 
-        <div className="menu-item">
-            <h1>Product Details</h1>
-            <h2> {name}</h2>
-            <img src={imageURL} alt={"BBQ - " + name} />
+            <h1>Item</h1>
+            <h2>{name}</h2>
             <p>{description}</p>
-            <p>{IngredientsList}</p>
-            <Link to={`/menu/${categoryID}`} >Go back</Link>
+            <img src={imageURL} alt={name} />
+            <p>{price}</p>
+            <h3>Ingredients</h3>
+            <span>{IngredientsList}</span>
+            {adminStatus === 1 && <Link to={`/admin/menu/${categoryID}/`} state={{ adminStatus }} >Go back</Link>}
+            {adminStatus === 0 && <Link to={`/menu/${categoryID}/`} state={{ adminStatus }} >Go back</Link>}
         </div>
-    )
+    );
+
 }

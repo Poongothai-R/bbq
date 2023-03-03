@@ -1,10 +1,10 @@
-import {Link, useParams} from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
-export default function ProductCard( {data}) {
-
+export default function ProductCard({ data, adminStatus }) {
+    // const productData = data;
     const { categoryID } = useParams();
-    const { id,name, description, imageURL,  } = data;
+    const { id, name, description, imageURL, } = data;
 
     return (
 
@@ -13,7 +13,16 @@ export default function ProductCard( {data}) {
             <h2> {name}</h2>
             <img src={imageURL} alt={"BBQ - " + name} />
             <p>{description}</p>
-            <Link to={`/menu/${categoryID}/Products/${id}`} state={{data}}>View More</Link>
+            {adminStatus === 1 &&
+                <>
+                    <div>
+                        <button>Update Product</button>
+                        <button>Delete Product</button>
+                    </div>
+                    <Link to={`/admin/menu/${categoryID}/Products/${id}`} state={{ data, adminStatus }}>View More</Link>
+                </>
+            }
+            {adminStatus === 0 && <Link to={`/menu/${categoryID}/Products/${id}`} state={{ data, adminStatus }}>View More</Link>}
         </div>
     )
 }
