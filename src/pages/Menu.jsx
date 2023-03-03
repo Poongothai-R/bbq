@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 
 // Project files
-import { readDocuments, createDocument ,updateDocument} from "../scripts/fireStore";
-import { deleteFile} from "../scripts/cloudStorage";
+import { readDocuments, createDocument, updateDocument, deleteDocument } from "../scripts/fireStore";
+import { deleteFile } from "../scripts/cloudStorage";
 import MenuItem from "../components/MenuItem";
 import ModalForm from "../components/ModalForm";
 
@@ -15,7 +15,6 @@ export default function Menu({ setModal }) {
     const [data, setData] = useState([]);
 
     const [adminStatus, setAdminStatus] = useState(0);  //0: Guest, 1: admin
-    // const [user, setUser] = useState(null);
 
     const location = useLocation();
     const path = location.pathname;
@@ -42,34 +41,38 @@ export default function Menu({ setModal }) {
     }
 
     async function onCreate(newItem) {
-        console.log("inside onCreate ")
-        const documentId = await createDocument("menu", newItem);
+        const documentId = await createDocument("menu", newItem).catch(onFail);
         const newData = { id: documentId, ...data };
         const result = [...data, newData];
-        setData(result);
+        onSuccess(result);
     }
-    async function onUpdate(data) {
-        const id = data.id;
+
+    async function onUpdate(updatedItem, id) {
         const clonedData = [...data];
         const itemIndex = clonedData.findIndex((item) => item.id === id);
-
-        clonedData[itemIndex] = data;
-        setData(clonedData);
-        await updateDocument("menu", data);
+        const imageURL = clonedData[itemIndex].imageURL;
+        deleteFile(imageURL);
+        clonedData[itemIndex] = updatedItem;
+        await updateDocument("menu", updatedItem, id).catch(onFail);
+        onSuccess(clonedData);
     }
-    deleteFile("https://firebasestorage.googleapis.com/v0/b/bbq-rest.appspot.com/o/category-image%2F1677864733842_bbq_dessert.jpeg?alt=media&token=8fa4a060-c7a8-477c-8db1-50ad1641d9d4");
 
-   /* async function onDelete(id) {
-        const clonedStudents = [...students];
-        const itemIndex = clonedStudents.findIndex((item) => item.id === id);
+    async function onDelete(id) {
+        if (id !== undefined) {
+            const clonedData = [...data];
+            const itemIndex = clonedData.findIndex((item) => item.id === id);
+            const imageURL = clonedData[itemIndex].imageURL;
 
-        clonedStudents.splice(itemIndex, 1);
-        setStudents(clonedStudents);
-        await deleteDocument(COLLECTION_NAME, id);
-    }*/
+            deleteFile(imageURL);
+            await deleteDocument("menu", id).catch(onFail);
+            delete clonedData[itemIndex];
+            onSuccess(clonedData);
+        }
+    }
 
     const Item = data.map((recs) => (
-        <MenuItem key={recs.id} data={recs} adminStatus={adminStatus} />
+        <MenuItem key={recs.id} data={recs} adminStatus={adminStatus} setModal={setModal} onUpdate={onUpdate}
+            onDelete={onDelete} />
     ));
 
     return (

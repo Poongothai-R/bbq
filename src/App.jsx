@@ -14,28 +14,28 @@ import { useState } from "react";
 
 
 export default function App() {
-    const [modal, setModal] = useState(null);
+  const [modal, setModal] = useState(null);
+  
+  // console.log(modal);
+  return (
+    <BrowserRouter>
+      <ScrollTop />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/menu/:categoryID" element={<Category />} />
+        <Route path="/menu/:categoryID/Products/:productID" element={<Product />} />
 
-    // console.log(modal);
-    return (
-        <BrowserRouter>
-            <ScrollTop />
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/menu" element={<Menu />} />
-                <Route path="/menu/:categoryID" element={<Category />} />
-                <Route path="/menu/:categoryID/Products/:productID" element={<Product />} />
-
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/admin/menu" element={<Menu setModal={setModal}/>} />
-                <Route path="/admin/menu/:categoryID" element={<Category setModal={setModal} />} />
-                <Route path="/admin/menu/:categoryID/Products/:productID" element={<Product />} />
-            </Routes>
-            <Modal modalState={[modal, setModal]}/>
-        </BrowserRouter>
-    );
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/menu" element={<Menu setModal={setModal}/>} />
+        <Route path="/admin/menu/:categoryID" element={<Category setModal={setModal} />} />
+        <Route path="/admin/menu/:categoryID/Products/:productID" element={<Product />} />
+      </Routes>
+      <Modal modalState={[modal, setModal]}/>
+    </BrowserRouter>  
+  );
 }
 
 

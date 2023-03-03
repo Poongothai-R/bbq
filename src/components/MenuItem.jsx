@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
+import ModalUpdateForm from "./ModalUpdateForm";
 
+export default function MenuItem({ data, adminStatus, setModal, onUpdate, onDelete }) {
 
-export default function MenuItem({ data, adminStatus,onUpdate }) {
-
-    const { name, description, imageURL, } = data;
-
-    const updatedData = { ...data };
+    const { id, name, description, imageURL, } = data;
 
     return (
 
@@ -17,8 +15,8 @@ export default function MenuItem({ data, adminStatus,onUpdate }) {
             {adminStatus === 1 &&
                 <>
                     <div>
-                        <button onClick={() => onUpdate(updatedData)}>Update Category</button>
-                        <button>Delete Category</button>
+                        <button onClick={()=>setModal(<ModalUpdateForm setModal={setModal} data={data} onUpdate={onUpdate}/>)}>Update Category</button>
+                        <button onClick={()=> onDelete(id) }>Delete Category</button>
                     </div>
                     <Link to={`/admin/menu/${name}`} state={{ adminStatus }}>View More</Link>
                 </>

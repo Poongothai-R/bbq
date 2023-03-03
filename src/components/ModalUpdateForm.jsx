@@ -5,35 +5,51 @@ import form from "../data/formFields.json";
 import readFile from "../scripts/resize-image/readFile";
 import resizeImage from "../scripts/resize-image/resizeImage";
 import { uploadFile, downloadFile } from "../scripts/cloudStorage";
+import { useEffect } from "react";
 
 
-export default function ModalForm({ setModal, onCreate }) {
+export default function ModalUpdateForm({ setModal, data, onUpdate }) {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [imageURL, setImageURL] = useState("");
+    const [imageURL, setImageURL] = useState();
+
+    useEffect(() => {
+        setName(data.name);
+        setDescription(data.description);
+        // setImageURL(data.imageURL);
+    }
+        , []);
     //   const [price, setPrice] = useState("");
 
-    function addItem(name, description, imageURL) {
-        const newItem = {
+    function updateItem(name, description, imageData) {
+        console.log(imageData);
+        const updatedItem = {
             "name": name,
             "description": description,
-            "imageURL": imageURL,
+            "imageURL": imageData,
         };
-        onCreate(newItem);
+        onUpdate(updatedItem, data.id);
     }
 
     async function onSubmit(event) {
         event.preventDefault();
-        
-        const filePath = `category-image/${Date.now()}_${imageURL.name}`;
-        const imageFromFile = await readFile(imageURL);
-        const resizedImage = await resizeImage(imageFromFile, 240, 180);
+        let image;
 
-        await uploadFile(resizedImage, filePath);
-        const image = await downloadFile(filePath);
-        console.log(await downloadFile(filePath));
+        if (imageURL !== undefined) {
+            const filePath = `category-image/${Date.now()}_${imageURL.name}`;
+            const imageFromFile = await readFile(imageURL);
+            const resizedImage = await resizeImage(imageFromFile, 240, 180);
 
-        addItem(name, description, image);
+            await uploadFile(resizedImage, filePath);
+            image = await downloadFile(filePath);
+            console.log(image);
+            console.log(imageURL);
+        }
+        else if (imageURL === undefined) {
+            image = data.imageURL;
+        }
+
+        updateItem(name, description, image);
         resetForm();
     }
 

@@ -1,5 +1,7 @@
 @import "./variable.css";
 
+@import "../pages/admin.css";
+
 @import "./app.css";
 @import "../components/navbar.css";
 @import "../pages/home.css";
