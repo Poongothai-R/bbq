@@ -1,0 +1,38 @@
+{
+    "name": {
+      "label": "name",
+      "type": "text",
+      "placeholder": "",
+      "required": true,
+      "autoFocus": true
+    },
+    "description": {
+      "label": "desc",
+      "type": "text",
+      "placeholder": "",
+      "required": true,
+      "autoFocus": true
+    },
+    "imageURL": {
+      "label": "imageURL",
+      "type": "file",
+      "accept":"image/png, image/jpeg, image/webp",
+      "required": true,
+      "autoFocus": true
+    },
+    "ingredients": {
+      "label": "ingredients",
+      "type": "text",
+      "placeholder": "",
+      "required": true,
+      "autoFocus": false
+    },
+    "price": {
+      "label": "price",
+      "type": "number",
+      "placeholder": "",
+      "required": true,
+      "autoFocus": false
+    }
+  }
+  

@@ -1,19 +1,22 @@
 // Node modules
 import { useEffect, useState } from "react";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 
 // Project files
 import { readDocuments } from "../scripts/fireStore";
 import ProductCard from "../components/ProductCard";
+import ModalForm from "../components/ModalForm";
 
 
-export default function Menu() {
+export default function Category({setModal}) {
     const { categoryID } = useParams();
-
+    const location = useLocation();
+    const { adminStatus } = location.state;
+    // console.log(adminStatus);
     // Local state
 
     const [status, setStatus] = useState(0); // 0: loading, 1: ready, 2: error
-    const [data, setData] = useState(   []);
+    const [data, setData] = useState([]);
 
     // Methods
     useEffect(() => {
@@ -22,7 +25,7 @@ export default function Menu() {
             const data = await readDocuments(collectionName).catch(onFail);
             onSuccess(data);
         }
-        loadData("/menu/"+categoryID+"/Products");
+        loadData("/menu/" + categoryID + "/Products");
     }, []);
 
     function onSuccess(data) {
@@ -35,19 +38,17 @@ export default function Menu() {
     }
 
     const Item = data.map((recs) => (
-        <ProductCard key={recs.id} data={recs} />
+        <ProductCard key={recs.id} data={recs} adminStatus={adminStatus} />
     ));
 
     return (
         <div className="menu" id="menu">
-            {/* <h1>Firebase Cloud Firestore</h1>
-          <h2>Create and Read document in Firestore</h2> */}
-
             {status === 0 && <p>Loading... </p>}
-            {status === 1 && <>{Item}</> }
+            {status === 1 && <>{Item}
+                {adminStatus === 1 && <button onClick={()=>setModal(<ModalForm setModal={setModal}/>)}>Add Product</button>}
+            </>}
             {status === 2 && <p>Error</p>}
             <Link to="/menu">Go back</Link>
-            {/* <Modal modalState={[modal, setModal]}  /> */}
         </div>
     );
 
