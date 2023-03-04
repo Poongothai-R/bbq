@@ -11,7 +11,6 @@ export default function ModalForm({ setModal, onCreate }) {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
-    //   const [price, setPrice] = useState("");
 
     function addItem(name, description, imageURL) {
         const newItem = {

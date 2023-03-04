@@ -3,7 +3,8 @@ import ModalUpdateForm from "./ModalUpdateForm";
 
 export default function MenuItem({ data, adminStatus, setModal, onUpdate, onDelete }) {
 
-    const { id, name, description, imageURL, } = data;
+    const { id,name, description, imageURL, } = data;
+    console.log(id);
 
     return (
 
@@ -18,10 +19,10 @@ export default function MenuItem({ data, adminStatus, setModal, onUpdate, onDele
                         <button onClick={()=>setModal(<ModalUpdateForm setModal={setModal} data={data} onUpdate={onUpdate}/>)}>Update Category</button>
                         <button onClick={()=> onDelete(id) }>Delete Category</button>
                     </div>
-                    <Link to={`/admin/menu/${name}`} state={{ adminStatus }}>View More</Link>
+                    <Link to={`/admin/menu/${id}`} state={{ adminStatus }}>View More</Link>
                 </>
             }
-            {adminStatus === 0 && <Link to={`/menu/${name}`} state={{ adminStatus }}>View More</Link>}
+            {adminStatus === 0 && <Link to={`/menu/${id}`} state={{ adminStatus }}>View More</Link>}
         </div>
     )
 }

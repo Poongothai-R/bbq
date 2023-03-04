@@ -10,12 +10,9 @@ import ModalForm from "../components/ModalForm";
 
 export default function Menu({ setModal }) {
     // Local state
-    //   const [modal,setModal] = useState(null);
-    const [status, setStatus] = useState(0); // 0: loading, 1: ready, 2: error
+    const [status, setStatus] = useState(0);
     const [data, setData] = useState([]);
-
     const [adminStatus, setAdminStatus] = useState(0);  //0: Guest, 1: admin
-
     const location = useLocation();
     const path = location.pathname;
 

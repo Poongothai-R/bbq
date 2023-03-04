@@ -17,10 +17,9 @@ export async function readDocuments(collectionName) {
 
 
 export async function createDocument(collectionName, data){
-  // console.log(data);
   const documentPath = collection(database, collectionName);
-  const document = await addDoc(documentPath, data);
-
+  const manualID = data.name;
+  const document = await setDoc(doc(documentPath, manualID), data);
   return document.id;
 }
 
