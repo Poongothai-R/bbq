@@ -2,42 +2,42 @@
     "name": {
       "label": "name",
       "type": "text",
-      "placeholder": "",
+      "placeholder": "Ex: BBQ Chicken",
       "required": true,
       "autoFocus": true
     },
     "description": {
       "label": "desc",
       "type": "text",
-      "placeholder": "",
+      "placeholder": "Ex: This is Chicken category",
       "required": true,
       "autoFocus": true
     },
     "addImageURL": {
-      "label": "imageURL",
+      "label": "Choose your image ",
       "type": "file",
       "accept":"image/png, image/jpeg, image/webp",
       "required": true,
       "autoFocus": true
     },
-  "updateImageURL": {
-    "label": "imageURL",
-    "type": "file",
-    "accept":"image/png, image/jpeg, image/webp",
-    "required": false,
-    "autoFocus": true
-  },
+    "updateImageURL": {
+      "label": "Choose your image: ",
+      "type": "file",
+      "accept":"image/png, image/jpeg, image/webp",
+      "required": false,
+      "autoFocus": true
+    },
     "ingredients": {
       "label": "ingredients",
-      "type": "prompt",
-      "placeholder": "",
+      "type": "text",
+      "placeholder": "Chicken breast 🍗, Onion 👹, Garlic 🧄",
       "required": true,
       "autoFocus": true
     },
     "price": {
       "label": "price",
       "type": "text",
-      "placeholder": "",
+      "placeholder": "Ex: 100 Kr:- (or) 60$",
       "required": true,
       "autoFocus": true
     }

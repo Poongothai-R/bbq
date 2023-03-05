@@ -4,6 +4,7 @@ export default function Modal({ modalState }) {
     const [modal, setModal] = modalState;
 
     // Safeguard
+    //Test case 1: Not to open when you pass null on modal
     if (modal === null) return null;
 
     return ReactDOM.createPortal(

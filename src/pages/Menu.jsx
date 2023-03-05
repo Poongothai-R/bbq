@@ -23,9 +23,7 @@ export default function Menu() {
         setStatus(1);
     }
 
-    function onFail() {
-        setStatus(2);
-    }
+    function onFail() { setStatus(2); }
 
     const Category = menuData.map((recs) => (
         <MenuItem key={recs.id} data={recs} path={MenucollectionPath} />
@@ -33,10 +31,9 @@ export default function Menu() {
 
     return (
         <div className="menu" id="menu">
-
             {status === 0 && <p>Loading... </p>}
-            {status === 1 && <>{Category}
-                {adminStatus === 1 && <button onClick={() => setModal(<ModalAddForm path={MenucollectionPath}/>)}>Add Category</button>}
+            {status === 1 && <> {(menuData.length > 0) ? Category : <h1> Restaurant will be open soon! </h1>}
+                {adminStatus === 1 && <button onClick={() => setModal(<ModalAddForm path={MenucollectionPath} />)}>Add Category</button>}
             </>}
             {status === 2 && <p>Error</p>}
         </div>

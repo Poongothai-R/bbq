@@ -8,8 +8,8 @@ import ProductCard from '../components/ProductCard';
 export default function Category() {
     const { adminStatus, setModal, productData, setProductData, status, setStatus } = useItems();
     const location = useLocation();
-    const category = location.state.categoryID;
-    const ProductCollectionPath = "menu/" + category + "/Products";
+    const category = location.state.categoryId;
+    const ProductcollectionPath = "menu/" + category + "/products";
 
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export default function Category() {
             const data = await readDocuments(collectionName).catch(onFail);
             onSuccess(data);
         }
-        loadData(ProductCollectionPath);
+        loadData(ProductcollectionPath);
     }, []);
 
     function onSuccess(data) {
@@ -31,15 +31,15 @@ export default function Category() {
     }
 
     const ProductList = productData.map((recs) => (
-        <ProductCard key={recs.id} data={recs} path={ProductCollectionPath} categoryID={category}/>
+        <ProductCard key={recs.id} data={recs} categoryId={category} path={ProductcollectionPath} />
     ));
 
     return (
         <div className="category-page" id="category">
             {status === 0 && <p>Loading... </p>}
-            {status === 1 && <>{ProductList}
+            {status === 1 && <>{(productData.length > 0) ? ProductList : <h1>Products are yet to add.</h1>}
                 {adminStatus === 1 &&
-                    <button onClick={() => setModal(<ModalAddForm path={ProductCollectionPath} />)} > Add Product</button>}
+                    <button onClick={() => setModal(<ModalAddForm path={ProductcollectionPath} />)} > Add Product</button>}
             </>}
             {status === 2 && <p>Error</p>}
             {adminStatus === 1 && <Link to="/admin/menu">Go back</Link>}
