@@ -1,28 +1,27 @@
+import { useItems } from "../state/ContextItems";
 import { Link, useParams } from "react-router-dom";
+import Actions from "./Actions";
 
-
-export default function ProductCard({ data, adminStatus }) {
-    // const productData = data;
-    const { categoryID } = useParams();
-    const { id, name, description, imageURL, } = data;
-
+export default function ProductCard({ data,path,categoryID }) {
+    const { id,name, description, imageURL, price } = data;
+    const { adminStatus } = useItems();
+    const { category } = useParams();
     return (
 
-        <div className="menu-item">
+        <div className="product-item">
 
             <h2> {name}</h2>
             <img src={imageURL} alt={"BBQ - " + name} />
             <p>{description}</p>
+            <p>{price}</p>
             {adminStatus === 1 &&
                 <>
-                    <div>
-                        <button>Update Product</button>
-                        <button>Delete Product</button>
-                    </div>
-                    <Link to={`/admin/menu/${categoryID}/Products/${id}`} state={{ data, adminStatus }}>View More</Link>
+                    <Actions data={data} path={path} />
+                    <Link to={`/admin/menu/${category}/${id}`} state={{data,categoryID}}>View More</Link>
                 </>
             }
-            {adminStatus === 0 && <Link to={`/menu/${categoryID}/Products/${id}`} state={{ data, adminStatus }}>View More</Link>}
+            {adminStatus === 0 &&
+                <Link to={`/menu/${category}/${id}`} state={{data,categoryID}}>View More</Link>}
         </div>
-    )
+    );
 }

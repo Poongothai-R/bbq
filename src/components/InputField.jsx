@@ -6,14 +6,6 @@ export default function InputField({ settings, state, }) {
     const { label, type, placeholder, required, autoFocus, accept } = settings;
     const [getter, setter] = state;
 
-    // function onValidate(callback, setState) {
-    //     // Safeguard
-    //     if (callback === undefined) return setState("0");
-    //     const result = callback(getter,list);
-    //     console.log(result.data);
-    //     setState(result.data);
-    // }
-
     return (
         <label className="input_field">
             {label}

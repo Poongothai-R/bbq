@@ -1,52 +1,35 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import InputField from "./InputField";
 import form from "../data/formFields.json";
 import { useItems } from "../state/ContextItems";
 import { ImageProcess } from "../scripts/imageProcess.js";
-import { onUpdate } from "../scripts/dataManipulation";
+import { onCreate } from "../scripts/dataManipulation";
 
-export default function ModalUpdateForm({data,path}) {
+export default function ModalAddForm({ path }) {
     const { setModal, menuData, setMenuData, productData, setProductData } = useItems();
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [imageURL, setImageURL] = useState();
+    const [imageURL, setImageURL] = useState("");
     const [price, setPrice] = useState("");
     const [ingredients, setIngredients] = useState([]);
     let folderName = (path === "menu") ? "category-image" : "product-image";
     let newItem = {};
-    const id = data.id;
-
-    useEffect(() => {
-        setName(data.name);
-        setDescription(data.description);
-        if(path !== "menu")
-        {
-            setPrice(data.price);
-            setIngredients(data.ingredients);
-        }
-    },[]);
 
     async function onSubmit(event) {
         event.preventDefault();
-        let image;
-        let keepImage = true;
-
+        let image ;
         if (imageURL !== undefined) {
             image = await ImageProcess(imageURL, folderName);
-            keepImage = false;
         }
-        else{
-            image = data.imageURL;
-        }
+        else{ image = imageURL }
         if (path === "menu") {
             newItem = {
                 "name": name,
                 "description": description,
                 "imageURL": image,
             };
-            const result = await onUpdate(newItem, id, menuData, path, keepImage);
-            setMenuData(result);
-            console.log(result);
+            const data = await onCreate(newItem, menuData, path);
+            setMenuData(data);
         }
         else {
             newItem = {
@@ -56,11 +39,9 @@ export default function ModalUpdateForm({data,path}) {
                 "price": price,
                 "ingredients": ingredients,
             };
-            const result = await onUpdate(newItem, id,productData, path, keepImage);
-            setProductData(result);
-            console.log(result);
+            const data = await onCreate(newItem, productData, path);
+            setProductData(data);
         }
-
         resetForm();
     }
     function resetForm() {
@@ -71,11 +52,11 @@ export default function ModalUpdateForm({data,path}) {
     }
 
     return (
-        <form className="modal_form" key={data.id} onSubmit={(event) => onSubmit(event)}>
+        <form className="modal_form" onSubmit={(event) => onSubmit(event)}>
             <h2>Create New item</h2>
             <InputField settings={form.name} state={[name, setName]}/>
             <InputField settings={form.description} state={[description, setDescription]}/>
-            <InputField settings={form.updateImageURL} state={[imageURL, setImageURL]}/>
+            <InputField settings={form.addImageURL} state={[imageURL, setImageURL]}/>
             {path !== "menu" && <>
                 <InputField settings={form.price} state={[price, setPrice]}/>
                 <InputField settings={form.ingredients} state={[ingredients, setIngredients]}/></>

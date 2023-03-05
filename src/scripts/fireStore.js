@@ -16,20 +16,18 @@ export async function readDocuments(collectionName) {
 }
 
 
-export async function createDocument(collectionName, data){
+export async function createDocument(collectionName, data) {
   const documentPath = collection(database, collectionName);
-  const manualID = data.name;
-  const document = await setDoc(doc(documentPath, manualID), data);
+  const document = await addDoc(documentPath, data)
   return document.id;
 }
 
-export async function updateDocument(collectionName, data, id){
+export async function updateDocument(collectionName, data, id) {
   const documentPath = doc(database, collectionName, id);
   await setDoc(documentPath, data);
 }
 
-export async function deleteDocument(collectionName, id, imageURL){
+export async function deleteDocument(collectionName, id) {
   const documentPath = doc(database, collectionName, id);
-
   await deleteDoc(documentPath);
 }

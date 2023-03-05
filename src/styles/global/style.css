@@ -1,12 +1,16 @@
 @import "./variable.css";
 
-@import "../pages/admin.css";
-
 @import "./app.css";
+
 @import "../components/navbar.css";
 @import "../pages/home.css";
 
-@import "../components/menuitem.css";
-
+/* contacts */
 @import "../components/formdata.css";
 @import "../pages/contact.css";
+
+/* menu */
+@import "../pages/menu.css";
+
+/* Category */
+@import "../pages/category.css";
