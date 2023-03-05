@@ -13,26 +13,33 @@
       "required": true,
       "autoFocus": true
     },
-    "imageURL": {
+    "addImageURL": {
       "label": "imageURL",
       "type": "file",
       "accept":"image/png, image/jpeg, image/webp",
-      "required": false,
+      "required": true,
       "autoFocus": true
     },
+  "updateImageURL": {
+    "label": "imageURL",
+    "type": "file",
+    "accept":"image/png, image/jpeg, image/webp",
+    "required": false,
+    "autoFocus": true
+  },
     "ingredients": {
       "label": "ingredients",
-      "type": "text",
+      "type": "prompt",
       "placeholder": "",
       "required": true,
-      "autoFocus": false
+      "autoFocus": true
     },
     "price": {
       "label": "price",
-      "type": "number",
+      "type": "text",
       "placeholder": "",
       "required": true,
-      "autoFocus": false
+      "autoFocus": true
     }
   }
   

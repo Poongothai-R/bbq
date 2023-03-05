@@ -1,7 +1,5 @@
 import { useRef, useState } from "react";
-import '../styles/components/formdata.css';
 import EmailJS from "emailjs-com";
-
 
 export default function FormData() {
     const formRef = useRef();
