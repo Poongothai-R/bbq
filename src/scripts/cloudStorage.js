@@ -21,7 +21,6 @@ export async function downloadFile(filePath) {
 }
 
 export async function deleteFile(imageURL) {
-    // console.log(imageURL);
     const splitImageData = imageURL.split(/%2F(.*?)\?alt/);
     const folderName = splitImageData[0].split('/')[7];
     const imageName = splitImageData[1];
