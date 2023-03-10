@@ -4,25 +4,28 @@ import ModalUpdateForm from "./ModalUpdateForm";
 
 
 export default function Actions({ data, path }) {
-
     const { menuData, setMenuData, productData, setProductData, setModal } = useItems();
-    const { id } = data;
+    const { id} = data;
 
     async function deleteItem() {
-        if (path === "menu") {
+        const result = window.confirm("Are you sure?");
+        if ((result) && (path === "menu") )
+        {
             const result = await onDelete(id, menuData, path);
             setMenuData(result);
         }
-        else {
+
+        if( (result)&& (path !== "menu") )
+        {
             const result = await onDelete(id, productData, path);
             setProductData(result);
         }
     }
 
     return (
-        <div>
-            <button key={id} onClick={() => setModal(<ModalUpdateForm data={data} path={path}/>)}>Update Category</button>
-            <button onClick={() => deleteItem()}>Delete Category</button>
+        <div className="action-page" id="action">
+            <button onClick={() => setModal(<ModalUpdateForm data={data} path={path} />)}>Update </button>
+            <button onClick={() => deleteItem()}>Delete </button>
         </div>
     );
 }
