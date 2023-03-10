@@ -1,5 +1,5 @@
 #home{
-    position: absolute;
+    position: relative;
     z-index: -1;
 }
 
@@ -9,5 +9,22 @@
     max-height: 100vh;
     width: 100vw;
     height: 100vh;
-    opacity: 0.5;
+    opacity: 0.6;
+    position: absolute;
 }
+.home-page h1, .home-page p {
+    position: relative;
+    padding-top: 50vh;
+    padding-bottom: 50vh;
+    text-align: center;
+}
+.admin{
+    display:none;
+}
+@media(max-height: 920px){
+    #home h1{
+        padding-bottom: 35vh;
+
+    }
+}
+

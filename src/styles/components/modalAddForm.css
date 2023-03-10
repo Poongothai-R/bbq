@@ -1,0 +1,97 @@
+.modal-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 100%;
+    gap: 20px;
+}
+
+.productview .modal-form{
+    gap:15px;
+}
+
+.modal-form h1{
+    font-size: var(--font-subtitle);
+    margin: 0 auto;
+    line-height: 1;
+    text-transform: uppercase;
+    border-bottom: 1px solid;
+}
+
+.form-button{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap:20px;
+}
+
+.button-primary, .button-secondary{
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.modal-form input{
+    height: 30px;
+    width: 250px;
+}
+
+@media (min-width:700px) and (min-height:900px){
+    .modal-form {
+        height: 100%;
+        width:65%;
+        margin: auto;
+        font-size: 24px;
+    }
+
+    .modal-form input{
+        height: 40px;
+        width: 350px;
+        font-size: 20px;
+    }
+
+    .button-primary, .button-secondary{
+        padding: 5px;
+        font-size: 24px;
+        font-weight: 700;
+        border-radius: 5px;
+    }
+
+    .modal-form input[type="file"]::file-selector-button{
+        height: 40px;
+        width: 150px;
+    }
+}
+
+@media (min-width:700px) and (max-height:900px) {
+    .modal-form {
+        height: 90%;
+        width:80%;
+        margin: auto;
+        font-size: 20px;
+    }
+
+    .modal-form input{
+        height: 30px;
+        width: 350px;
+        font-size: 20px;
+    }
+}
+
+@media (min-width:1024px) and (min-height:900px) {
+    .modal-form {
+        height: 90%;
+        width:60%;
+        margin: auto;
+        font-size: 20px;
+    }
+
+    .modal-form input{
+        height: 30px;
+        width: 350px;
+        font-size: 20px;
+    }
+}

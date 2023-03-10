@@ -1,0 +1,10 @@
+#admin{
+    position: relative;
+}
+
+ .admin-page h1{
+    position: relative;
+    padding-top: 30vh;
+     padding-bottom: 65vh;
+    text-align: center;
+}

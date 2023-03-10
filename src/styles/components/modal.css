@@ -1,0 +1,99 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.modalview,
+.productview {
+    position: fixed;
+    top: 50%;
+    left: 30%;
+    transform: translate(-25%, -50%);
+    background-color: var(--white);
+    color: var(--black);
+    z-index: 1001;
+    width: 80vw;
+    height: 60vh;
+    font-family: var(--font);
+    border-radius: 10px;
+}
+
+.productview {
+    height: 70vh;
+}
+
+.modalview-btn {
+    float: right;
+    height: 25px;
+    width: fit-content;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.modal-content {
+    padding-top: 10vh;
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+.productview .modal-content {
+    padding-top: 5vh;
+}
+
+@media (min-width:700px) {
+    .modal-content {
+        padding-top: 10vh;
+        margin: 0 auto;
+        max-width: 80%;
+    }
+
+    .productview .modal-content {
+        padding-top: 10vh;
+    }
+
+}
+
+
+
+@media (min-width:1024px) {
+
+    .modalview {
+        left: 40%;
+        width: 50vw;
+    }
+
+    .modal-content {
+        padding-top: 5vh;
+        margin: 0 auto;
+        max-width: 80%;
+    }
+
+    .productview {
+        left: 40%;
+        width: 40vw;
+    }
+
+    .productview .modal-content {
+        padding-top: 10vh;
+    }
+
+    @media screen and (max-height:800px) {
+        .productview {
+            left: 40%;
+            width: 50vw;
+            height: 85vh;
+        }
+
+        .productview .modal-content {
+            padding-top: 5vh;
+        }
+
+    }
+
+}

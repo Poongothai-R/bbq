@@ -15,3 +15,32 @@ body{
     color: var(--white);
     font-weight: var(--font-weight);
 }
+.heading{
+    position: relative;
+    text-align: center  ;
+    padding-top: 50%;
+    padding-bottom: 65vh;
+    left: 50%;
+    transform: translate(-50%, -30%);
+}
+.none{
+    display: none;
+}
+.center-button{
+    position: relative;
+    margin: 0 auto 50px auto;
+    width: 55vw;
+    min-height: 30vh;
+    border: 2px solid var(--white);
+    border-radius: 10px;
+}
+@media screen and (min-width:800px){
+    .center-button{
+        width:25vw;
+    }
+}
+@media screen and (max-width:600px){
+    .heading{
+        padding-top: 70vh;
+    }
+}

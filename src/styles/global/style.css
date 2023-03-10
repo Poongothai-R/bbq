@@ -4,6 +4,8 @@
 
 @import "../components/navbar.css";
 @import "../pages/home.css";
+@import "../pages/admin.css";
+@import "../components/footer.css";
 
 /* contacts */
 @import "../components/formdata.css";
@@ -14,3 +16,10 @@
 
 /* Category */
 @import "../pages/category.css";
+
+/* Product */
+@import "../pages/product.css";
+
+/* Modal */
+@import "../components/modal.css";
+@import "../components/modalAddForm.css";

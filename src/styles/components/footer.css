@@ -1,0 +1,39 @@
+.footer {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    padding: 24px
+
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    gap: 20px;
+
+}
+.footer-top a{
+    color:white;
+}
+
+.footer-top span {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+}
+
+.footer-bottom span {
+    font-size: 12px;
+}
+
+@media all and (max-width:700px) {
+    .footer {
+        gap: 5px;
+
+    }
+
+}
