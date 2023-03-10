@@ -3,23 +3,17 @@ import { Link } from "react-router-dom";
 import { useItems } from "../state/ContextItems";
 
 export default function MenuItem({ data, path }) {
-    const { id:categoryID, name, description, imageURL, } = data;
+    const { id: categoryId, name, description, imageURL, } = data;
     const { adminStatus } = useItems();
-    
+    const link = (adminStatus===0)?`/menu/${name}`:`/admin/menu/${name}`;
+
     return (
-
         <div className="menu-item">
-
-            <h2> {name}</h2>
-            <img src={imageURL} alt={"BBQ - " + name} />
+            <h1> {name}</h1>
+            <img src={imageURL} alt={name} />
             <p>{description}</p>
-            {adminStatus === 1 &&
-                <>
-                    <Actions key={categoryID} data={data} path={path}/>
-                    <Link to={`/admin/menu/${name}`} state={{ categoryID }}>View More</Link>
-                </>
-            }
-            {adminStatus === 0 && <Link to={`/menu/${name}`} state={{ categoryID }}>View More</Link>}
+            {adminStatus === 1 && <Actions key={categoryId} data={data} path={path} /> }
+            <Link to={link} state={{data,categoryId}}>View More</Link>
         </div>
     )
 }
