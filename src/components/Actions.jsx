@@ -15,7 +15,7 @@ export default function Actions({ data, path }) {
             setMenuData(result);
         }
 
-        if( (result)&& (path !== "menu") )
+        else if( (result)&& (path !== "menu") )
         {
             const result = await onDelete(id, productData, path);
             setProductData(result);

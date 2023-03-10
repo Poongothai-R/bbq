@@ -12,7 +12,7 @@ export default function MenuItem({ data, path }) {
             <h1> {name}</h1>
             <img src={imageURL} alt={name} />
             <p>{description}</p>
-            {adminStatus === 1 && <Actions key={categoryId} data={data} path={path} /> }
+            {adminStatus === 1 && <Actions  data={data} path={path} /> }
             <Link to={link} state={{data,categoryId}}>View More</Link>
         </div>
     )
