@@ -8,7 +8,7 @@ export default function AdminMenu(){
     const MenuCollectionPath = "menu";
 
     return(
-        <div>
+        <div className="menu">
             <Menu/>
            <button onClick={() => setModal(<ModalAddForm path={MenuCollectionPath}/>)}>Add Category</button>
         </div>

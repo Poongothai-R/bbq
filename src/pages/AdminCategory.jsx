@@ -11,7 +11,7 @@ export default function AdminCategory(){
     const ProductCollectionPath = "menu/" + category + "/Products";
 
     return(
-        <div>
+        <div className="category">
             <Category>
             <button onClick={() => setModal(<ModalAddForm path={ProductCollectionPath} />)} > Add Product</button>}
             </Category>
