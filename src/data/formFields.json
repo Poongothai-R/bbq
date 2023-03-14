@@ -1,45 +1,44 @@
 {
-    "name": {
-      "label": "name",
-      "type": "text",
-      "placeholder": "",
-      "required": true,
-      "autoFocus": true
-    },
-    "description": {
-      "label": "desc",
-      "type": "text",
-      "placeholder": "",
-      "required": true,
-      "autoFocus": true
-    },
-    "addImageURL": {
-      "label": "imageURL",
-      "type": "file",
-      "accept":"image/png, image/jpeg, image/webp",
-      "required": true,
-      "autoFocus": true
-    },
+  "name": {
+    "label": "name",
+    "type": "text",
+    "placeholder": "",
+    "required": true,
+    "autoFocus": true
+  },
+  "description": {
+    "label": "desc",
+    "type": "text",
+    "placeholder": "",
+    "required": true,
+    "autoFocus": true
+  },
+  "addImageURL": {
+    "label": "imageURL",
+    "type": "file",
+    "accept": "image/png, image/jpeg, image/webp",
+    "required": true,
+    "autoFocus": true
+  },
   "updateImageURL": {
     "label": "imageURL",
     "type": "file",
-    "accept":"image/png, image/jpeg, image/webp",
+    "accept": "image/png, image/jpeg, image/webp",
     "required": false,
     "autoFocus": true
   },
-    "ingredients": {
-      "label": "ingredients",
-      "type": "prompt",
-      "placeholder": "",
-      "required": true,
-      "autoFocus": true
-    },
-    "price": {
-      "label": "price",
-      "type": "text",
-      "placeholder": "",
-      "required": true,
-      "autoFocus": true
-    }
+  "ingredients": {
+    "label": "ingredients",
+    "type": "prompt",
+    "placeholder": "",
+    "required": true,
+    "autoFocus": true
+  },
+  "price": {
+    "label": "price",
+    "type": "text",
+    "placeholder": "",
+    "required": true,
+    "autoFocus": true
   }
-  
+}
