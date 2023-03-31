@@ -2,7 +2,8 @@
 
 This is a React JS based web app intended to be used for creating a Vegan Restaurant website.
 
-Host Link: https://vegan-restaurant-e7799.web.app/
+Host Link: (https://bbq-rest.web.app/)
+            https://bbq-rest.web.app/admin
 ## Pre-requisites
     git
     Node Js
